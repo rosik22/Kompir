@@ -47,6 +47,9 @@ int main(){
     Student stud;
     stud.ReadStudent("Ivan Petrov", "0930498324", 43235, 5.49);
     stud.PrintStudent();
+    int hodor;
+    hodor = 5;
+    std::cout << hodor << std::endl;
 
     return 0;
 }
