@@ -34,8 +34,8 @@ void remove (vector<Student> &ss, int k){
         if (k == ss[i].get_facnum()){
             for(int j=i; j<ss.size() - 1; j++){
                 ss[j] = ss[j+1];
-                ss.pop_back();
             }
+            ss.pop_back();
         }
     }
 }
