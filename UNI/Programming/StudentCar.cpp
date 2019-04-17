@@ -58,6 +58,7 @@ int main(){
     }
     Car *pc = new Car ("Toyota");
     Car *pc_old = all[0]->set_car(pc);
+    delete pc_old;
     print(all);
 
     return 0;
