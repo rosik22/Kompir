@@ -45,7 +45,7 @@ int main(){
         int res;
         int p = hours[i];
         if(workers[i].getType() == "sal") {
-            SalariedWorker salwork;
+            SalariedWorker salwork; 
             res=salwork.compute_pay(p);
             }
     }
