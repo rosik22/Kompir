@@ -10,9 +10,9 @@ private:
     string brand;
 };
 
-class Student {
+class Person {
 public:
-    Student(string n, string fn, int fac, Car* c) {
+    Person(string n, string fn, int fac, Car* c) {
         name = n;
         family = fn;
         facnum = fac;
@@ -30,30 +30,30 @@ private:
     Car* car;
 };
 
-void Student::print(){
+void Person::print(){
     cout << name << " " << family << " " << facnum;
     if (car != NULL) cout << " " << car->getBrand();
     cout << endl;
 }
 
-void print(vector<Student*> p){
+void print(vector<Person*> p){
     for(int i=0; i<p.size(); i++) p[i]->print();
 }
 
-Car* Student::set_car(Car *pc){
+Car* Person::set_car(Car *pc){
     Car* car_old = car;
     car = pc;
     return car_old;
 }
 
 int main(){
-    vector <Student*> all;
+    vector <Person*> all;
     string n,f,c;
     int fn;
     while (cin>>n>>f>>fn>>c){
         Car *cc = NULL;
         cc = new Car (c);
-        Student *stt = new Student(n,f,fn,cc);
+        Person *stt = new Person(n,f,fn,cc);
         all.push_back(stt);
     }
     Car *pc = new Car ("Toyota");
