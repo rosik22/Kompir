@@ -4,23 +4,19 @@
 #include <sys/types.h>
 using namespace std;
 
-/*int rand_int(){
-    return rand() % 20 + 1;
-}*/
-
-int binarySearch(int a[], int item, int low, int high) 
+int binarySearch(int a[], int Buf, int low, int high) 
 { 
     if (high <= low) 
-        return (item > a[low])?  (low + 1): low; 
+        return (Buf > a[low])?  (low + 1): low; 
   
     int mid = (low + high)/2; 
   
-    if(item == a[mid]) 
+    if(Buf == a[mid]) 
         return mid+1; 
   
-    if(item > a[mid]) 
-        return binarySearch(a, item, mid+1, high); 
-    return binarySearch(a, item, low, mid-1); 
+    if(Buf > a[mid]) 
+        return binarySearch(a, Buf, mid+1, high); 
+    return binarySearch(a, Buf, low, mid-1); 
 } 
 
 void insertionSort(int arr[], int n)  
@@ -38,7 +34,7 @@ void insertionSort(int arr[], int n)
             arr[j + 1] = arr[j];  
             j = j - 1;  
         }  
-        arr[j + 1] = Buf;  
+        arr[j + 1] = Buf;
     }  
 }  
 
