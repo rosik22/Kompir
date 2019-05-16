@@ -2,6 +2,18 @@
 #include <vector>
 using namespace std;
 
+enum ears{small, medium, large};
+
+class maimuna{
+    ears e;
+public:
+    maimuna(): e(medium){};
+    maimuna(ears e1): e(e1) {}
+    bool operator == (maimuna& m){
+        return (e == m.e);
+    }
+};
+
 template<typename T>
 
 class Set{
@@ -32,10 +44,11 @@ public:
 
 
 int main(){
-    Set<int> s;
-    s.add(5);
-    s.add(5);
-    s.add(6);
+    Set<maimuna> s;
+    maimuna m1(small), m2(large), m3;
+    s.add(m1);
+    s.add(m2);
+    s.add(m3);
     cout<<s.get_size()<<endl;
     return 0;
 }
