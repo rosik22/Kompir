@@ -3,16 +3,22 @@ using namespace std;
 
 class Money{
 public:
-    Money (int a, int b): first(a), second(b) {}
-    Money operator+ (const Money& right) {
-        return Money (first + right.first + (second + right.second)/100,
-                        (second + right.second) % 100 );
+    Money (int a, int b): leva(a), stotinki(b) {}
+    Money operator+ (const Money& m) {
+        return Money(leva + m.leva + (stotinki + m.stotinki)/100 , (stotinki + m.stotinki)%100);
     }
     friend ostream& operator<< (ostream& ostr, Money& m) {
-        ostr<< m.first << "." << m.second;
+        ostr<< m.leva << "." << m.stotinki;
+    }
+    friend istream& operator>> (istream& istr, Money& m) {
+        int l,s;
+        char dot;
+        istr>>l>>dot>>s;
+        m = Money(l,s);
+        return istr;
     }
 private:
-    int first, second;
+    int leva, stotinki;
 };
 
 int main(){
