@@ -1,0 +1,316 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+img{
+margin-top:0px;
+margin-bottom:0px;
+margin-right:0px;
+margin-left:0px;
+}
+table, td, th
+{
+border:0px solid black;
+}
+td
+{
+height:20px;
+width:10px;
+vertical-align:bottom;
+}
+th
+{
+background-color:green;
+color:white;
+}
+input[type=text] {
+background-color: lightgray;
+}
+#nav
+{
+position:absolute;
+left:800px;
+top:100px; 
+}
+#step
+{
+position:absolute;
+left:800px;
+top:150px; 
+}
+#cycle
+{
+position:absolute;
+left:800px;
+top:200px; 
+}
+#compare
+{
+position:absolute;
+left:800px;
+top:250px; 
+}
+#swap
+{
+position:absolute;
+left:800px;
+top:300px; 
+}
+#search
+{
+position:absolute;
+left:10px;
+top:50px; 
+}
+
+#frm2
+{
+position:absolute;
+left:220px;
+top:8px; 
+}
+#prod
+{
+position:absolute;
+left:500px;
+top:150px; 
+}
+
+</style>
+<script type="text/javascript">
+columns1 = new Array(10);
+columns2 = new Array(10);
+columns3 = new Array(10);
+columns4 = new Array(10);
+columns5 = new Array(10);
+columns6 = new Array(10);
+columns7 = new Array(10);
+columns8 = new Array(10);
+columns9 = new Array(10);
+columns10 = new Array(10);
+columns11 = new Array(10);
+columns12 = new Array(10);
+columns13 = new Array(10);
+columns14 = new Array(10);
+columns15 = new Array(10);
+columns16 = new Array(10);
+columns17 = new Array(10);
+columns18 = new Array(10);
+columns19 = new Array(10);
+columns20 = new Array(10);
+
+
+rows = new Array(20);
+rows[0] = columns1;
+rows[1] = columns2;
+rows[2] = columns3;
+rows[3] = columns4;
+rows[4] = columns5;
+rows[5] = columns6;
+rows[6] = columns7;
+rows[7] = columns8;
+rows[8] = columns9;
+rows[9] = columns10;
+rows[10] = columns11;
+rows[11] = columns12;
+rows[12] = columns13;
+rows[13] = columns14;
+rows[14] = columns15;
+rows[15] = columns16;
+rows[16] = columns17;
+rows[17] = columns18;
+rows[18] = columns19;
+rows[19] = columns20;
+
+rows[2][3]=0;
+
+var stack=[];
+
+//for (i=0; i < 5; i++) { columns1[i] = i; } // number the columns 1 through 5
+//for (i=0; i < 5; i++) { columns2[i] = i + 5; } // number the next row of columns 6 through 10
+//for (i=0; i < 5; i++) { columns3[i] = i + 10; } // and so on
+//for (i=0; i < 5; i++) { columns4[i] = i + 15; }
+//for (i=0; i < 5; i++) { columns5[i] = i + 20; }
+	
+
+	var counter=0;
+	var j=0;
+	var found=false;
+	var next_step=true;
+
+function Init()
+{	
+
+}
+	
+function check_images(){
+	document.getElementById(frm1.txtarea2.value).src="darkgrass.jpg";
+	}	 
+	
+function draw_maze(){
+	found=false;
+	zmaze=frm1.txtarea.value;
+	zmaze = zmaze.replace(/\n/g, "");
+	frm1.txtarea2.value="";
+	ChangeText('search',"LENGTH:"+zmaze.length);
+	for(i=0;i<10;i++){
+	for(j=0;j<20;j++){
+			img="img"+(i+1)+"x"+(j+1);	//frm1.txtarea2.value=frm1.txtarea2.value+"i="+i+"j="+j+"|"+(zmaze.charAt(20*i+j))+"\n";
+			rows[i][j]=zmaze.charAt(20*i+j);
+			if (zmaze.charAt(20*i+j)=="1")
+				{document.getElementById(img).src="bricks.jpg";}
+				//else
+			if (zmaze.charAt(20*i+j)=="0")
+				{document.getElementById(img).src="darkgrass.jpg";}
+			
+			if (zmaze.charAt(20*i+j)=="2")
+				{document.getElementById(img).src="walkgrass.jpg";}	
+		}
+} 
+}	   
+
+function redraw_maze(){
+	for(i=0;i<10;i++){
+	for(j=0;j<20;j++){
+		img="img"+(i+1)+"x"+(j+1);
+		//rows[i][j]=zmaze.charAt(20*i+j);
+		if (rows[i][j]=="1")
+			{document.getElementById(img).src="bricks.jpg";}
+			if (rows[i][j]=="0")
+				{document.getElementById(img).src="darkgrass.jpg";}
+			if (rows[i][j]=="2")
+				{document.getElementById(img).src="walkgrass.jpg";}	
+		}
+} 
+}	
+
+function redraw_maze_tile(i,j,dir){
+	img="img"+(i+1)+"x"+(j+1);
+	if (rows[i][j]=="1")
+		{document.getElementById(img).src="bricks.jpg";}
+	if (rows[i][j]=="0")
+		{document.getElementById(img).src="darkgrass.jpg";}
+	if (rows[i][j]=="2")
+		{
+			if (dir=="l")
+				{document.getElementById(img).src="walkgrass-left.jpg";}
+			if (dir=="r")
+				{document.getElementById(img).src="walkgrass-right.jpg";}
+			if (dir=="u")
+				{document.getElementById(img).src="walkgrass-up.jpg";}
+			if (dir=="d")
+				{document.getElementById(img).src="walkgrass-down.jpg";}
+			
+			
+		}	
+	if (rows[i][j]=="4")
+		{document.getElementById(img).src="badgrass.jpg";}		
+	if (rows[i][j]=="5")
+		{document.getElementById(img).src="goalreached.jpg";}	
+}	
+
+
+function next(x1, y1, x2, y2,dir){
+	frm1.txtarea2.value=frm1.txtarea2.value+"Called Next with x1="+x1+"| y1="+y1+"\n";
+	if (next_step==true) 
+		search(x1, y1, x2, y2,dir);
+	else
+		setTimeout(next,1000,x1,y1,x2,y2,dir);
+		//next(x1, y1, x2, y2,dir);
+	}
+	
+function search(){
+	floatup=true;
+	sObj=stack[stack.length-1];
+	//sObj=stack.pop();
+	frm1.txtarea2.value=frm1.txtarea2.value+"Called search with x1="+sObj.x1+"| y1="+sObj.y1+"\n";
+	if (sObj.x1==sObj.x2&&sObj.y1==sObj.y2) 
+	{ChangeText('search',"FOUND!"); rows[sObj.x1][sObj.y1]=5; redraw_maze_tile(sObj.x1,sObj.y1);} 	
+	if (sObj.x1<10&&rows[sObj.x1+1][sObj.y1]==0) {stack.push({x1:sObj.x1+1,y1:sObj.y1,x2:sObj.x2,y2:sObj.y2,dir:"d"}); floatup=false;}
+	if (sObj.x1>1&&rows[sObj.x1-1][sObj.y1]==0) {stack.push({x1:sObj.x1-1,y1:sObj.y1,x2:sObj.x2,y2:sObj.y2,dir:"u"}); floatup=false;}
+	if (sObj.y1<20&&rows[sObj.x1][sObj.y1+1]==0) {stack.push({x1:sObj.x1,y1:sObj.y1+1,x2:sObj.x2,y2:sObj.y2,dir:"r"}); floatup=false;}
+	if (sObj.y1>1&&rows[sObj.x1][sObj.y1-1]==0) {stack.push({x1:sObj.x1,y1:sObj.y1-1,x2:sObj.x2,y2:sObj.y2,dir:"l"}); floatup=false;}
+	if (floatup==true){
+		sObj=stack.pop();
+	if (rows[sObj.x1][sObj.y1]!=5)rows[sObj.x1][sObj.y1]=4;
+	redraw_maze_tile(sObj.x1,sObj.y1,"");}
+	else
+	{
+	rows[sObj.x1][sObj.y1]=2;
+	redraw_maze_tile(sObj.x1,sObj.y1,sObj.dir);
+	}
+	ChangeText('search',"Stack size:"+stack.length);
+}
+
+
+function search2(){
+	sObj=stack.pop();
+	frm1.txtarea2.value=frm1.txtarea2.value+"Called search with x1="+sObj.x1+"| y1="+sObj.y1+"\n";
+	rows[sObj.x1][sObj.y1]=2;
+	redraw_maze_tile(sObj.x1,sObj.y1,sObj.dir);
+	if (sObj.x1==sObj.x2&&sObj.y1==sObj.y2) 
+	{ChangeText('search',"FOUND!"); rows[sObj.x1][sObj.y1]=5; redraw_maze_tile(sObj.x1,sObj.y1); found=true;} 	
+	if (sObj.x1<10&&rows[sObj.x1+1][sObj.y1]==0&&found==false) stack.push({x1:sObj.x1+1,y1:sObj.y1,x2:sObj.x2,y2:sObj.y2,dir:"d"});
+	if (sObj.x1>1&&rows[sObj.x1-1][sObj.y1]==0&&found==false) stack.push({x1:sObj.x1-1,y1:sObj.y1,x2:sObj.x2,y2:sObj.y2,dir:"u"});
+	if (sObj.y1<20&&rows[sObj.x1][sObj.y1+1]==0&&found==false) stack.push({x1:sObj.x1,y1:sObj.y1+1,x2:sObj.x2,y2:sObj.y2,dir:"r"});
+	if (sObj.y1>1&&rows[sObj.x1][sObj.y1-1]==0&&found==false) stack.push({x1:sObj.x1,y1:sObj.y1-1,x2:sObj.x2,y2:sObj.y2,dir:"l"});
+	//if (found==false)rows[x1][y1]=4;
+	//if (found==false)redraw_maze_tile(x1,y1,"");
+}
+
+function set_goal(){
+	img="img"+(parseInt(frm1.x.value)+1)+"x"+(parseInt(frm1.y.value)+1);
+		document.getElementById(img).src="goal.jpg";
+		//ChangeText('search',img);
+	}
+
+function pausecomp(ms) {
+ms += new Date().getTime();
+while (new Date() < ms){}
+} 
+
+function ChangeText(id,txt){
+	var obj = document.getElementById(id);
+	obj.innerHTML=txt;
+	}	 
+	
+	 
+</script>
+
+</head>
+
+<body onload="javascript:Init()">
+	
+	<form id="frm1" name="frm1">
+	<input id="button1" value="Search" onclick="stack.push({x1:1,y1:1,x2:frm1.x.value,y2:frm1.y.value,d:'d'})" type="button">
+	<input id="button2" value="Draw Maze" onclick="draw_maze()" type="button">
+	<input id="button3" value="Set goal" onclick="set_goal()" type="button">
+	<input id="button4" value="Next Step" onclick="search()" type="button">
+<textarea id="txtarea" rows="10" cols="20">
+11111111111111111111
+10000000000000000001
+10111111101011111101
+10000000101010110101
+10111111101010110101
+10100000000010110101
+10101110111110110101
+10101010100000110101
+10001000001000000001
+11111111111111111111
+</textarea> 
+<textarea id="txtarea2" rows="10" cols="20">
+</textarea> 	
+<div id="search">
+	
+</div>
+<br>
+Row of the goal
+<input type="text" name="x" value="3" size="2"/>
+Col of the goal
+<input type="text" name="y" value="16"size="2"/>
+</form>
+<img id="img1x1" src="bricks.jpg" width="40" height="40"><img id="img1x2" src="bricks.jpg"width="40" height="40"><img id="img1x3" src="bricks.jpg"width="40" height="40"><img id="img1x4" src="bricks.jpg"width="40" height="40"><img id="img1x5" src="bricks.jpg"width="40" height="40"><img id="img1x6" src="bricks.jpg"width="40" height="40"><img id="img1x7" src="bricks.jpg"width="40" height="40"><img id="img1x8" src="bricks.jpg"width="40" height="40"><img id="img1x9" src="bricks.jpg"width="40" height="40"><img id="img1x10" src="bricks.jpg"width="40" height="40"><img id="img1x11" src="bricks.jpg" width="40" height="40"><img id="img1x12" src="bricks.jpg"width="40" height="40"><img id="img1x13" src="bricks.jpg"width="40" height="40"><img id="img1x14" src="bricks.jpg"width="40" height="40"><img id="img1x15" src="bricks.jpg"width="40" height="40"><img id="img1x16" src="bricks.jpg"width="40" height="40"><img id="img1x17" src="bricks.jpg"width="40" height="40"><img id="img1x18" src="bricks.jpg"width="40" height="40"><img id="img1x19" src="bricks.jpg"width="40" height="40"><img id="img1x20" src="bricks.jpg"width="40" height="40"><br><img id="img2x1" src="bricks.jpg" width="40" height="40"><img id="img2x2" src="bricks.jpg"width="40" height="40"><img id="img2x3" src="bricks.jpg"width="40" height="40"><img id="img2x4" src="bricks.jpg"width="40" height="40"><img id="img2x5" src="bricks.jpg"width="40" height="40"><img id="img2x6" src="bricks.jpg"width="40" height="40"><img id="img2x7" src="bricks.jpg"width="40" height="40"><img id="img2x8" src="bricks.jpg"width="40" height="40"><img id="img2x9" src="bricks.jpg"width="40" height="40"><img id="img2x10" src="bricks.jpg"width="40" height="40"><img id="img2x11" src="bricks.jpg" width="40" height="40"><img id="img2x12" src="bricks.jpg"width="40" height="40"><img id="img2x13" src="bricks.jpg"width="40" height="40"><img id="img2x14" src="bricks.jpg"width="40" height="40"><img id="img2x15" src="bricks.jpg"width="40" height="40"><img id="img2x16" src="bricks.jpg"width="40" height="40"><img id="img2x17" src="bricks.jpg"width="40" height="40"><img id="img2x18" src="bricks.jpg"width="40" height="40"><img id="img2x19" src="bricks.jpg"width="40" height="40"><img id="img2x20" src="bricks.jpg"width="40" height="40"><br><img id="img3x1" src="bricks.jpg" width="40" height="40"><img id="img3x2" src="bricks.jpg"width="40" height="40"><img id="img3x3" src="bricks.jpg"width="40" height="40"><img id="img3x4" src="bricks.jpg"width="40" height="40"><img id="img3x5" src="bricks.jpg"width="40" height="40"><img id="img3x6" src="bricks.jpg"width="40" height="40"><img id="img3x7" src="bricks.jpg"width="40" height="40"><img id="img3x8" src="bricks.jpg"width="40" height="40"><img id="img3x9" src="bricks.jpg"width="40" height="40"><img id="img3x10" src="bricks.jpg"width="40" height="40"><img id="img3x11" src="bricks.jpg" width="40" height="40"><img id="img3x12" src="bricks.jpg"width="40" height="40"><img id="img3x13" src="bricks.jpg"width="40" height="40"><img id="img3x14" src="bricks.jpg"width="40" height="40"><img id="img3x15" src="bricks.jpg"width="40" height="40"><img id="img3x16" src="bricks.jpg"width="40" height="40"><img id="img3x17" src="bricks.jpg"width="40" height="40"><img id="img3x18" src="bricks.jpg"width="40" height="40"><img id="img3x19" src="bricks.jpg"width="40" height="40"><img id="img3x20" src="bricks.jpg"width="40" height="40"><br><img id="img4x1" src="bricks.jpg" width="40" height="40"><img id="img4x2" src="bricks.jpg"width="40" height="40"><img id="img4x3" src="bricks.jpg"width="40" height="40"><img id="img4x4" src="bricks.jpg"width="40" height="40"><img id="img4x5" src="bricks.jpg"width="40" height="40"><img id="img4x6" src="bricks.jpg"width="40" height="40"><img id="img4x7" src="bricks.jpg"width="40" height="40"><img id="img4x8" src="bricks.jpg"width="40" height="40"><img id="img4x9" src="bricks.jpg"width="40" height="40"><img id="img4x10" src="bricks.jpg"width="40" height="40"><img id="img4x11" src="bricks.jpg" width="40" height="40"><img id="img4x12" src="bricks.jpg"width="40" height="40"><img id="img4x13" src="bricks.jpg"width="40" height="40"><img id="img4x14" src="bricks.jpg"width="40" height="40"><img id="img4x15" src="bricks.jpg"width="40" height="40"><img id="img4x16" src="bricks.jpg"width="40" height="40"><img id="img4x17" src="bricks.jpg"width="40" height="40"><img id="img4x18" src="bricks.jpg"width="40" height="40"><img id="img4x19" src="bricks.jpg"width="40" height="40"><img id="img4x20" src="bricks.jpg"width="40" height="40"><br><img id="img5x1" src="bricks.jpg" width="40" height="40"><img id="img5x2" src="bricks.jpg"width="40" height="40"><img id="img5x3" src="bricks.jpg"width="40" height="40"><img id="img5x4" src="bricks.jpg"width="40" height="40"><img id="img5x5" src="bricks.jpg"width="40" height="40"><img id="img5x6" src="bricks.jpg"width="40" height="40"><img id="img5x7" src="bricks.jpg"width="40" height="40"><img id="img5x8" src="bricks.jpg"width="40" height="40"><img id="img5x9" src="bricks.jpg"width="40" height="40"><img id="img5x10" src="bricks.jpg"width="40" height="40"><img id="img5x11" src="bricks.jpg" width="40" height="40"><img id="img5x12" src="bricks.jpg"width="40" height="40"><img id="img5x13" src="bricks.jpg"width="40" height="40"><img id="img5x14" src="bricks.jpg"width="40" height="40"><img id="img5x15" src="bricks.jpg"width="40" height="40"><img id="img5x16" src="bricks.jpg"width="40" height="40"><img id="img5x17" src="bricks.jpg"width="40" height="40"><img id="img5x18" src="bricks.jpg"width="40" height="40"><img id="img5x19" src="bricks.jpg"width="40" height="40"><img id="img5x20" src="bricks.jpg"width="40" height="40"><br><img id="img6x1" src="bricks.jpg" width="40" height="40"><img id="img6x2" src="bricks.jpg"width="40" height="40"><img id="img6x3" src="bricks.jpg"width="40" height="40"><img id="img6x4" src="bricks.jpg"width="40" height="40"><img id="img6x5" src="bricks.jpg"width="40" height="40"><img id="img6x6" src="bricks.jpg"width="40" height="40"><img id="img6x7" src="bricks.jpg"width="40" height="40"><img id="img6x8" src="bricks.jpg"width="40" height="40"><img id="img6x9" src="bricks.jpg"width="40" height="40"><img id="img6x10" src="bricks.jpg"width="40" height="40"><img id="img6x11" src="bricks.jpg" width="40" height="40"><img id="img6x12" src="bricks.jpg"width="40" height="40"><img id="img6x13" src="bricks.jpg"width="40" height="40"><img id="img6x14" src="bricks.jpg"width="40" height="40"><img id="img6x15" src="bricks.jpg"width="40" height="40"><img id="img6x16" src="bricks.jpg"width="40" height="40"><img id="img6x17" src="bricks.jpg"width="40" height="40"><img id="img6x18" src="bricks.jpg"width="40" height="40"><img id="img6x19" src="bricks.jpg"width="40" height="40"><img id="img6x20" src="bricks.jpg"width="40" height="40"><br><img id="img7x1" src="bricks.jpg" width="40" height="40"><img id="img7x2" src="bricks.jpg"width="40" height="40"><img id="img7x3" src="bricks.jpg"width="40" height="40"><img id="img7x4" src="bricks.jpg"width="40" height="40"><img id="img7x5" src="bricks.jpg"width="40" height="40"><img id="img7x6" src="bricks.jpg"width="40" height="40"><img id="img7x7" src="bricks.jpg"width="40" height="40"><img id="img7x8" src="bricks.jpg"width="40" height="40"><img id="img7x9" src="bricks.jpg"width="40" height="40"><img id="img7x10" src="bricks.jpg"width="40" height="40"><img id="img7x11" src="bricks.jpg" width="40" height="40"><img id="img7x12" src="bricks.jpg"width="40" height="40"><img id="img7x13" src="bricks.jpg"width="40" height="40"><img id="img7x14" src="bricks.jpg"width="40" height="40"><img id="img7x15" src="bricks.jpg"width="40" height="40"><img id="img7x16" src="bricks.jpg"width="40" height="40"><img id="img7x17" src="bricks.jpg"width="40" height="40"><img id="img7x18" src="bricks.jpg"width="40" height="40"><img id="img7x19" src="bricks.jpg"width="40" height="40"><img id="img7x20" src="bricks.jpg"width="40" height="40"><br><img id="img8x1" src="bricks.jpg" width="40" height="40"><img id="img8x2" src="bricks.jpg"width="40" height="40"><img id="img8x3" src="bricks.jpg"width="40" height="40"><img id="img8x4" src="bricks.jpg"width="40" height="40"><img id="img8x5" src="bricks.jpg"width="40" height="40"><img id="img8x6" src="bricks.jpg"width="40" height="40"><img id="img8x7" src="bricks.jpg"width="40" height="40"><img id="img8x8" src="bricks.jpg"width="40" height="40"><img id="img8x9" src="bricks.jpg"width="40" height="40"><img id="img8x10" src="bricks.jpg"width="40" height="40"><img id="img8x11" src="bricks.jpg" width="40" height="40"><img id="img8x12" src="bricks.jpg"width="40" height="40"><img id="img8x13" src="bricks.jpg"width="40" height="40"><img id="img8x14" src="bricks.jpg"width="40" height="40"><img id="img8x15" src="bricks.jpg"width="40" height="40"><img id="img8x16" src="bricks.jpg"width="40" height="40"><img id="img8x17" src="bricks.jpg"width="40" height="40"><img id="img8x18" src="bricks.jpg"width="40" height="40"><img id="img8x19" src="bricks.jpg"width="40" height="40"><img id="img8x20" src="bricks.jpg"width="40" height="40"><br><img id="img9x1" src="bricks.jpg" width="40" height="40"><img id="img9x2" src="bricks.jpg"width="40" height="40"><img id="img9x3" src="bricks.jpg"width="40" height="40"><img id="img9x4" src="bricks.jpg"width="40" height="40"><img id="img9x5" src="bricks.jpg"width="40" height="40"><img id="img9x6" src="bricks.jpg"width="40" height="40"><img id="img9x7" src="bricks.jpg"width="40" height="40"><img id="img9x8" src="bricks.jpg"width="40" height="40"><img id="img9x9" src="bricks.jpg"width="40" height="40"><img id="img9x10" src="bricks.jpg"width="40" height="40"><img id="img9x11" src="bricks.jpg" width="40" height="40"><img id="img9x12" src="bricks.jpg"width="40" height="40"><img id="img9x13" src="bricks.jpg"width="40" height="40"><img id="img9x14" src="bricks.jpg"width="40" height="40"><img id="img9x15" src="bricks.jpg"width="40" height="40"><img id="img9x16" src="bricks.jpg"width="40" height="40"><img id="img9x17" src="bricks.jpg"width="40" height="40"><img id="img9x18" src="bricks.jpg"width="40" height="40"><img id="img9x19" src="bricks.jpg"width="40" height="40"><img id="img9x20" src="bricks.jpg"width="40" height="40"><br><img id="img10x1" src="bricks.jpg" width="40" height="40"><img id="img10x2" src="bricks.jpg"width="40" height="40"><img id="img10x3" src="bricks.jpg"width="40" height="40"><img id="img10x4" src="bricks.jpg"width="40" height="40"><img id="img10x5" src="bricks.jpg"width="40" height="40"><img id="img10x6" src="bricks.jpg"width="40" height="40"><img id="img10x7" src="bricks.jpg"width="40" height="40"><img id="img10x8" src="bricks.jpg"width="40" height="40"><img id="img10x9" src="bricks.jpg"width="40" height="40"><img id="img10x10" src="bricks.jpg"width="40" height="40"><img id="img10x11" src="bricks.jpg" width="40" height="40"><img id="img10x12" src="bricks.jpg"width="40" height="40"><img id="img10x13" src="bricks.jpg"width="40" height="40"><img id="img10x14" src="bricks.jpg"width="40" height="40"><img id="img10x15" src="bricks.jpg"width="40" height="40"><img id="img10x16" src="bricks.jpg"width="40" height="40"><img id="img10x17" src="bricks.jpg"width="40" height="40"><img id="img10x18" src="bricks.jpg"width="40" height="40"><img id="img10x19" src="bricks.jpg"width="40" height="40"><img id="img10x20" src="bricks.jpg"width="40" height="40">
+<br>
+
+</body>		
+</html>

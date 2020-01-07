@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+			scroll-behavior: smooth;
+		}
+
+		.bg {
+			background-image: url("img_avatar.png");
+			height: 85%;
+			background-position: top;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.image {
+			display: flex;
+			height: auto;
+		}
+
+		.overlay {
+			position: absolute;
+			bottom: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			background: rgb(141, 141, 141);
+			background: rgba(0, 0, 0, 0.4);
+			overflow: hidden;
+			width: 100%;
+			height: 0;
+			transition: .5s ease;
+		}
+
+		.bg:hover .overlay {
+			height: 85%;
+		}
+
+		.text {
+			color: rgb(231, 219, 204);
+			font-size: 70px;
+			font-family: 'Raleway', sans-serif;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			text-align: center;
+			line-height: 1.2;
+			text-shadow: 3px 2px rgb(41, 41, 41);
+			padding: 20px;
+			border: 2px solid black;
+		}
+
+		body {
+			margin: 0;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.navbar {
+			background-color: rgb(29, 29, 29);
+			position: fixed;
+			top: 0;
+			width: 40%;
+			left: 30%;
+			display: block;
+			transition: top 0.3s;
+			opacity: 0.8;
+			border-radius: 5px;
+			-webkit-border-radius: 40px;
+			-moz-border-radius: 40px;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			color: rgb(231, 219, 204);
+			width: 20%;
+			text-align: center;
+			padding: 5px;
+			text-decoration: none;
+			font-size: 16px;
+			transform: translate(20%);
+		}
+
+
+		.navbar a:hover {
+			color: rgb(231, 219, 204);
+		}
+
+		.navbar a.active {
+			color: rgb(231, 219, 204);
+			opacity: 0.8;
+		}
+
+		.navbar .icon {
+			display: none;
+		}
+
+		@media screen and (max-width: 1200px) {
+			.navbar a:not(:first-child) {
+				display: none;
+			}
+
+			.navbar a.icon {
+				position: absolute;
+				display: block;
+				right: 12%;
+			}
+		}
+
+		@media screen and (max-width: 1200px) {
+			.navbar.responsive {
+				position: relative;
+			}
+
+			.navbar.responsive .icon {
+				position: absolute;
+				right: 12%;
+				top: 0;
+			}
+
+			.navbar.responsive a {
+				float: none;
+				display: block;
+				text-align-last: center;
+			}
+		}
+	</style>
+	<title>new project</title>
+</head>
+
+<body>
+
+	<a name="causes"></a>
+
+	<div class="bg">
+		<div class="overlay"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<div class="text">Change ourselves not the climate</div>
+		</div>
+		<div class="navbar" id="myNavbar">
+			<a href="#indication" class="active">Indication</a>
+			<a href="#causes">Causes</a>
+			<a href="#consequences">Consequences</a>
+			<a href="#solution">Solution</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+		</div>
+	</div>
+
+	<div style="padding:15px 15px 2500px;font-size:30px;margin-top:30px;">
+		<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
+		<p>Scroll down this frame to see the effect!</p>
+		<p>Scroll up to show the navbar.</p>
+		<div id="causes">Causes</div>
+		<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+			aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+			deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+			aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+			deserunt mollit anim id est laborum.</p>
+	</div>
+
+
+	<script>
+		var prevScrollpos = window.pageYOffset;
+		window.onscroll = function () {
+			var currentScrollPos = window.pageYOffset;
+			if (prevScrollpos > currentScrollPos) {
+				document.getElementById("navbar").style.top = "0";
+			} else {
+				document.getElementById("navbar").style.top = "-50px";
+			}
+			prevScrollpos = currentScrollPos;
+		}
+		function myFunction() {
+			var x = document.getElementById("myNavbar");
+			if (x.className === "navbar") {
+				x.className += " responsive";
+			} else {
+				x.className = "navbar";
+			}
+		}
+	</script>
+</body>
+
+</html>
