@@ -17,15 +17,16 @@ po newNode(int num){
 }
 
 // 9,1,2,9,8,91,29,9,9,1,2,99,12 //
-po build(po tree, int num){
+po search(po tree, int num){
     po last = NULL;
     po temp;
+    int counter = 0;
     if(tree == NULL){
         return newNode(num);
     }
     else{
         temp = tree;
-        while(temp!=NULL){
+        while(temp!=NULL && temp->data!= num){
             last = temp;
             if(num < temp->data){
                 temp = temp->left;
@@ -33,6 +34,10 @@ po build(po tree, int num){
             else{
                 temp = temp->right;
             }
+            counter++;
+        }
+        if(temp->data == num){
+            cout<<num<<" was found after "<<counter<<" searches"<<endl;
         }
         if(temp == NULL){
             temp = new node;
@@ -45,7 +50,7 @@ po build(po tree, int num){
     }
     return tree;
 }
-
+/*
 po search(po tree, int num){
     int counter = 0;
     po last = NULL;
@@ -64,7 +69,7 @@ po search(po tree, int num){
     if(temp == NULL){
         temp = new node;
         temp->data = num;
-        temp->left = NULL;
+        temp->left arduino= NULL;
         temp->right = NULL;
         if(last->data > num) last->left = temp;
         else last->right = temp;
@@ -75,6 +80,7 @@ po search(po tree, int num){
     }
     return tree;
 }
+*/
 
 void infix(po tree){
     if(tree){
@@ -105,15 +111,17 @@ int main(){
     
     int arr[13] = {9,1,2,9,8,91,29,9,9,1,2,99,12};
     for(int i=0; i<13; i++){
-        tree = build(tree,arr[i]);
+        tree = search(tree,arr[i]);
     }
     cout<<"infix: ";
     infix(tree);
     print(tree, 0);
+
+    tree = search(tree, 29);
     
-    tree = search(tree, 28);
+    //tree = search(tree, 28);
 
     print(tree, 0);
-
+    delete tree;
     return 0;
 }
