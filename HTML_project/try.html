@@ -3,22 +3,32 @@
 
 <head>
 	<meta charset="utf-8" />
-	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 		body,
 		html {
 			height: 100%;
 			margin: 0;
 			scroll-behavior: smooth;
+			background-color: rgb(212, 212, 212);
+		}
+
+		::-webkit-scrollbar {
+			width: 13px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgb(29, 29, 29);
+			border-radius: 10px;
 		}
 
 		.bg {
-			background-image: url("img_avatar.png");
+			background-image: url("heading.jpg");
 			height: 85%;
-			background-position: top;
+			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
@@ -47,7 +57,7 @@
 		}
 
 		.text {
-			color: rgb(231, 219, 204);
+			color: rgb(245, 238, 229);
 			font-size: 70px;
 			font-family: 'Raleway', sans-serif;
 			position: absolute;
@@ -58,7 +68,7 @@
 			transform: translate(-50%, -50%);
 			text-align: center;
 			line-height: 1.2;
-			text-shadow: 3px 2px rgb(41, 41, 41);
+			text-shadow: 3px 2px rgb(0, 0, 0);
 			padding: 20px;
 			border: 2px solid black;
 		}
@@ -70,7 +80,7 @@
 
 		.navbar {
 			background-color: rgb(29, 29, 29);
-			position:fixed;
+			position: fixed;
 			top: 0;
 			width: 40%;
 			left: 30%;
@@ -85,7 +95,7 @@
 		.navbar a {
 			float: left;
 			display: block;
-			color: rgb(231, 219, 204);
+			color: rgb(245, 238, 229);
 			width: 20%;
 			text-align: center;
 			padding: 5px;
@@ -96,20 +106,19 @@
 
 
 		.navbar a:hover {
-			color: rgb(231, 219, 204);
+			color: rgb(245, 238, 229);
 		}
 
 		.navbar a.active {
-			color: rgb(231, 219, 204);
-			opacity: 0.8;
+			color: rgb(245, 238, 229);
 		}
 
 		.navbar .icon {
 			display: none;
 		}
 
-		@media screen and (max-width: 1300px){
-			.text{
+		@media screen and (max-width: 1300px) {
+			.text {
 				font-size: 60px;
 			}
 		}
@@ -124,17 +133,18 @@
 				display: block;
 				right: 12%;
 			}
+
 			.navbar.responsive {
 				position: fixed;
 			}
 
-			.navbar{
+			.navbar {
 				width: 20%;
 				left: 40%;
 			}
 
 			.navbar.responsive .icon {
-				position: absolute;;
+				position: absolute;
 				right: 12%;
 				top: 0;
 				padding-left: 0%;
@@ -145,33 +155,54 @@
 				display: block;
 			}
 
-			.text{
+			.text {
 				font-size: 50px;
 			}
 		}
 
-		@media screen and (max-width: 700px){
-			.navbar{
+		@media screen and (max-width: 700px) {
+			.navbar {
 				width: 28%;
-				left:35%;
+				left: 35%;
 			}
-			.text{
+
+			.text {
 				font-size: 40px;
 			}
 		}
 
+		.dot {
+			height: 15px;
+			width: 15px;
+			background-color: rgb(34, 34, 34);
+			border-radius: 50%;
+			display: inline-block;
+			margin: 10px 47% 0;
+		}
+
+		.pagetextright {
+			float: right;
+			padding-left: 50%;
+			font-size: 20px;
+			margin-top: 30px;
+			width: 50 vw;
+		}
+
+		.imageright {
+			background-image: url(indication.jpg);
+			float: left;
+			width: 50px;
+			height: 50px;
+		}
 	</style>
-	<title>new project</title>
+	<title>website</title>
 </head>
 
 <body>
-
 	<a name="causes"></a>
 
 	<div class="bg">
 		<div class="overlay">
-			<link rel="stylesheet"
-				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<div class="text">Change ourselves not the climate</div>
 		</div>
 		<div class="navbar" id="myNavbar">
@@ -183,21 +214,16 @@
 		</div>
 	</div>
 
-	<div style="padding:15px 15px 2500px;font-size:30px;margin-top:30px;">
-		<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
-		<p>Scroll down this frame to see the effect!</p>
-		<p>Scroll up to show the navbar.</p>
-		<div id="causes">Causes</div>
-		<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-			aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-			deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-			aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-			deserunt mollit anim id est laborum.</p>
+	<span class="dot"></span>
+	<span class="dot"></span>
+	<span class="dot"></span>
+
+	<div class="imageright"> </div>
+	<div class="pagetextright">
+		<div id="indication"><b>Indication</b></div>
+		<p>One of the most Discussed & Deadliest issue to human life is “Global Warming” which is caused due to a
+			sudden increase in the levels of Green House gases which includes SO2, CO2, etc.
+			These are the major reason for the sudden hike in the temperature of the earth.</p>
 	</div>
 
 
@@ -212,6 +238,7 @@
 			}
 			prevScrollpos = currentScrollPos;
 		}
+
 		function myFunction() {
 			var x = document.getElementById("myNavbar");
 			if (x.className === "navbar") {
@@ -221,6 +248,7 @@
 			}
 		}
 	</script>
+
 </body>
 
 </html>
