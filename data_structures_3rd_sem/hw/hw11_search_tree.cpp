@@ -26,7 +26,7 @@ po search(po tree, int num){
     }
     else{
         temp = tree;
-        while(temp!=NULL && temp->data!= num){
+        while(temp!=NULL){
             last = temp;
             if(num < temp->data){
                 temp = temp->left;
@@ -50,7 +50,7 @@ po search(po tree, int num){
     }
     return tree;
 }
-/*
+
 po search(po tree, int num){
     int counter = 0;
     po last = NULL;
@@ -69,7 +69,7 @@ po search(po tree, int num){
     if(temp == NULL){
         temp = new node;
         temp->data = num;
-        temp->left arduino= NULL;
+        temp->left = NULL;
         temp->right = NULL;
         if(last->data > num) last->left = temp;
         else last->right = temp;
@@ -80,7 +80,7 @@ po search(po tree, int num){
     }
     return tree;
 }
-*/
+
 
 void infix(po tree){
     if(tree){

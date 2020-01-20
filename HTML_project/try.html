@@ -177,22 +177,64 @@
 			background-color: rgb(34, 34, 34);
 			border-radius: 50%;
 			display: inline-block;
-			margin: 10px 47% 0;
+			margin: 10px 47% 40px;
 		}
 
-		.pagetextright {
+		.container {
 			float: right;
-			padding-left: 50%;
 			font-size: 20px;
-			margin-top: 30px;
-			width: 50 vw;
+			text-align: center;
+			padding: 100px 30px 10px 20px;
+			background-color: rgb(218, 218, 218);
 		}
 
-		.imageright {
-			background-image: url(indication.jpg);
+		.container img {
 			float: left;
-			width: 50px;
-			height: 50px;
+			max-width: 45%;
+			max-height: 100%;
+			margin: 40px 40px 80px 30px;
+		}
+
+		.container1 {
+			float: left;
+			font-size: 20px;
+			text-align: center;
+			padding: 100px 10px 100px 20px;
+		}
+
+		.container1 img {
+			float: right;
+			max-width: 45%;
+			max-height: 100%;
+			margin: 40px 20px 40px 40px;
+		}
+
+		.container2 {
+			float: left;
+			background-color: rgb(19, 18, 18);
+			padding: 0 0 70px 0;
+		}
+
+		.container2_text {
+			font-size: 25px;
+			text-align: center;
+			padding: 0 40px 0 40px;
+			color: whitesmoke;
+		}
+
+		.container2 img {
+			float: initial;
+			max-width: 100%;
+			max-height: 100%;
+			margin: 0 0 30px 0;
+		}
+
+		.final {
+			position: relative;
+			font-size: 30px;
+			text-align: center;
+			margin: 30px 10px 30px 10px;
+			border: 2px solid black;
 		}
 	</style>
 	<title>website</title>
@@ -218,14 +260,86 @@
 	<span class="dot"></span>
 	<span class="dot"></span>
 
-	<div class="imageright"> </div>
-	<div class="pagetextright">
+	<div class="container">
+		<img src="indication.jpg" alt="indications">
 		<div id="indication"><b>Indication</b></div>
 		<p>One of the most Discussed & Deadliest issue to human life is “Global Warming” which is caused due to a
 			sudden increase in the levels of Green House gases which includes SO2, CO2, etc.
 			These are the major reason for the sudden hike in the temperature of the earth.</p>
+		<p>The evidence for rapid climate change is compelling: global temperatures are getting higher,
+			oceans are warming, ice sheets are shrinking and the sea level is rising.</p>
 	</div>
 
+	<div class="container1">
+		<img src="causes.png" alt="causes">
+		<div id="causes"><b>Causes</b></div>
+		<p>
+			Certain gases in the atmosphere block heat from escaping. Long-lived gases that remain semi-permanently
+			in the atmosphere and do not respond physically or chemically to changes in temperature are described as
+			"forcing" climate change. Gases, such as water vapor, which respond physically or chemically to changes
+			in temperature are seen as "feedbacks."</p>
+		<p>
+			Gases that contribute to the greenhouse effect include: water vapor, carbon dioxide, methane, nitrous oxide.
+		</p>
+	</div>
+
+	<div class="container2">
+		<img src="consequences.jpg" alt="consequences">
+		<div class="container2_text">
+			<div id="consequences"><b>Consequences</b></div>
+			<p>
+				Global climate is projected to continue to change over this century and beyond. The magnitude of climate
+				change beyond the next few decades depends primarily on the amount of heat-trapping gases emitted
+				globally,
+				and how sensitive the Earth’s climate is to those emissions.</p>
+			<p>
+				It is predicted that temperatures will continue to rise, seasons will become frost-free,
+				sea level will rise with 1-4 feet and the Arctic will become ice-free.
+			</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<img src="solutions.png" alt="solutions">
+		<div id="solution"><b>Solution</b></div>
+		<p>
+			1) Renewable energies :
+			The first way to prevent climate change is to move away from fossil fuels. What are the alternatives?
+			Renewable energies like solar, wind, biomass and geothermal.
+		</p>
+		<p>
+			2) Energy & water efficiency :
+			Producing clean energy is essential, but reducing our consumption of energy and water by using more
+			efficient devices
+			(e.g. LED light bulbs, innovative shower system) is less costly and equally important.
+		</p>
+		<p>
+			3) Sustainable transportation :
+			Promoting public transportation, carpooling, but also electric and hydrogen mobility, can definitely help
+			reduce CO2 emissions and thus fight global warming.
+		</p>
+		<p>
+			4) Sustainable agriculture & forest management :
+			Encouraging better use of natural resources, stopping massive deforestation as well as making agriculture
+			greener and more efficient should also be a priority
+		</p>
+		<p>
+			5) Sustainable infrastructure :
+			In order to reduce the CO2 emissions from buildings - caused by heating, air conditioning, hot water or
+			lighting - it is necessary both to build new low energy buildings, and to renovate the existing
+			constructions.
+		</p>
+		<p>
+			6) Responsible consumption & recycling : 
+			Adopting responsible consumption habits is crucial, be it regarding food (particularly meat), clothing,
+			cosmetics or cleaning products. Last but not least, recycling is an absolute necessity for dealing with
+			waste.
+		</p>
+	</div>
+
+	<div class="final">
+		<h1>"The effects of climate change are real and must be acted on."</h1>
+	</div>
 
 	<script>
 		var prevScrollpos = window.pageYOffset;

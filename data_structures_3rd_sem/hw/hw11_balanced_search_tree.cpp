@@ -38,11 +38,11 @@ int main(){
     po tree = NULL;
     int num;
     
-    int arr[13] = {1,1,2,2,8,9,9,9,9,12,29,91,99};
+    int arr[13] = {1,2,6,8,9,9,9,12,19,21,42,55};
 
 
 
-    tree = build_balanced(arr,0,12);
+    tree = build_balanced(arr,0,11);
 
     print(tree, 0);
 
