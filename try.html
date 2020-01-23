@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+			scroll-behavior: smooth;
+			background-color: rgb(212, 212, 212);
+		}
+
+		::-webkit-scrollbar {
+			width: 13px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgb(29, 29, 29);
+			border-radius: 10px;
+		}
+
+		.bg {
+			background-image: url("heading.jpg");
+			height: 85%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.image {
+			display: flex;
+			height: auto;
+		}
+
+		.overlay {
+			position: absolute;
+			bottom: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			background: rgb(141, 141, 141);
+			background: rgba(0, 0, 0, 0.4);
+			overflow: hidden;
+			width: 100%;
+			height: 0;
+			transition: .5s ease;
+		}
+
+		.bg:hover .overlay {
+			height: 85%;
+		}
+
+		.text {
+			color: rgb(245, 238, 229);
+			font-size: 70px;
+			font-family: 'Raleway', sans-serif;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			text-align: center;
+			line-height: 1.2;
+			text-shadow: 3px 2px rgb(0, 0, 0);
+			padding: 20px;
+			border: 2px solid black;
+		}
+
+		body {
+			margin: 0;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.navbar {
+			background-color: rgb(29, 29, 29);
+			position: fixed;
+			top: 0;
+			width: 40%;
+			left: 30%;
+			display: block;
+			transition: top 0.3s;
+			opacity: 0.8;
+			border-radius: 5px;
+			-webkit-border-radius: 40px;
+			-moz-border-radius: 40px;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			color: rgb(245, 238, 229);
+			width: 20%;
+			text-align: center;
+			padding: 5px;
+			text-decoration: none;
+			font-size: 16px;
+			transform: translate(20%);
+		}
+
+
+		.navbar a:hover {
+			color: rgb(245, 238, 229);
+		}
+
+		.navbar a.active {
+			color: rgb(245, 238, 229);
+		}
+
+		.navbar .icon {
+			display: none;
+		}
+
+		@media screen and (max-width: 1300px) {
+			.text {
+				font-size: 60px;
+			}
+		}
+
+		@media screen and (max-width: 1200px) {
+			.navbar a:not(:first-child) {
+				display: none;
+			}
+
+			.navbar a.icon {
+				position: absolute;
+				display: block;
+				right: 12%;
+			}
+
+			.navbar.responsive {
+				position: fixed;
+			}
+
+			.navbar {
+				width: 20%;
+				left: 40%;
+			}
+
+			.navbar.responsive .icon {
+				position: absolute;
+				right: 12%;
+				top: 0;
+				padding-left: 0%;
+			}
+
+			.navbar.responsive a {
+				float: none;
+				display: block;
+			}
+
+			.text {
+				font-size: 50px;
+			}
+		}
+
+		@media screen and (max-width: 700px) {
+			.navbar {
+				width: 28%;
+				left: 35%;
+			}
+
+			.text {
+				font-size: 40px;
+			}
+		}
+
+		.dot {
+			height: 15px;
+			width: 15px;
+			background-color: rgb(34, 34, 34);
+			border-radius: 50%;
+			display: inline-block;
+			margin: 10px 47% 40px;
+		}
+
+		.container {
+			float: right;
+			font-size: 20px;
+			text-align: center;
+			padding: 100px 30px 10px 20px;
+			background-color: rgb(218, 218, 218);
+		}
+
+		.container img {
+			float: left;
+			max-width: 45%;
+			max-height: 100%;
+			margin: 40px 40px 80px 30px;
+		}
+
+		.container1 {
+			float: left;
+			font-size: 20px;
+			text-align: center;
+			padding: 100px 10px 100px 20px;
+		}
+
+		.container1 img {
+			float: right;
+			max-width: 45%;
+			max-height: 100%;
+			margin: 40px 20px 40px 40px;
+		}
+
+		.container2 {
+			float: left;
+			background-color: rgb(19, 18, 18);
+			padding: 0 0 70px 0;
+		}
+
+		.container2_text {
+			font-size: 25px;
+			text-align: center;
+			padding: 0 40px 0 40px;
+			color: whitesmoke;
+		}
+
+		.container2 img {
+			float: initial;
+			max-width: 100%;
+			max-height: 100%;
+			margin: 0 0 30px 0;
+		}
+
+		.final {
+			float: left;
+			font-size: 30px;
+			text-align: center;
+			margin: 10px 10px 20px 10px;
+		}
+	</style>
+	<title>website</title>
+</head>
+
+<body>
+	<div class="bg">
+		<div class="overlay">
+			<div class="text">Change ourselves not the climate</div>
+		</div>
+		<div class="navbar" id="myNavbar">
+			<a href="#indication" class="active">Indication</a>
+			<a href="#causes">Causes</a>
+			<a href="#consequences">Consequences</a>
+			<a href="#solutions">Solutions</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+		</div>
+	</div>
+
+	<span class="dot"></span>
+	<span class="dot"></span>
+	<span class="dot"></span>
+
+	<div class="container">
+		<img src="indication.jpg" alt="indications">
+		<div id="indication"><b>Indication</b></div>
+		<p>One of the most Discussed & Deadliest issue to human life is “Global Warming” which is caused due to a
+			sudden increase in the levels of Green House gases which includes SO2, CO2, etc.
+			These are the major reason for the sudden hike in the temperature of the earth.</p>
+		<p>The evidence for rapid climate change is compelling: global temperatures are getting higher,
+			oceans are warming, ice sheets are shrinking and the sea level is rising.</p>
+	</div>
+
+	<div class="container1">
+		<img src="causes.png" alt="causes">
+		<div id="causes"><b>Causes</b></div>
+		<p>
+			Certain gases in the atmosphere block heat from escaping. Long-lived gases that remain semi-permanently
+			in the atmosphere and do not respond physically or chemically to changes in temperature are described as
+			"forcing" climate change. Gases, such as water vapor, which respond physically or chemically to changes
+			in temperature are seen as "feedbacks."</p>
+		<p>
+			Gases that contribute to the greenhouse effect include: water vapor, carbon dioxide, methane, nitrous oxide.
+		</p>
+	</div>
+
+	<div class="container2">
+		<img src="consequences.jpg" alt="consequences">
+		<div class="container2_text">
+			<div id="consequences"><b>Consequences</b></div>
+			<p>
+				Global climate is projected to continue to change over this century and beyond. The magnitude of climate
+				change beyond the next few decades depends primarily on the amount of heat-trapping gases emitted
+				globally,
+				and how sensitive the Earth’s climate is to those emissions.</p>
+			<p>
+				It is predicted that temperatures will continue to rise, seasons will become frost-free,
+				sea level will rise with 1-4 feet and the Arctic will become ice-free.
+			</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<img src="solutions.png" alt="solutions">
+		<div id="solutions"><b>Solutions</b></div>
+		<p>
+			1) Renewable energies :
+			The first way to prevent climate change is to move away from fossil fuels. What are the alternatives?
+			Renewable energies like solar, wind, biomass and geothermal.
+		</p>
+		<p>
+			2) Energy & water efficiency :
+			Producing clean energy is essential, but reducing our consumption of energy and water by using more
+			efficient devices
+			(e.g. LED light bulbs, innovative shower system) is less costly and equally important.
+		</p>
+		<p>
+			3) Sustainable transportation :
+			Promoting public transportation, carpooling, but also electric and hydrogen mobility, can definitely help
+			reduce CO2 emissions and thus fight global warming.
+		</p>
+		<p>
+			4) Sustainable agriculture & forest management :
+			Encouraging better use of natural resources, stopping massive deforestation as well as making agriculture
+			greener and more efficient should also be a priority
+		</p>
+		<p>
+			5) Sustainable infrastructure :
+			In order to reduce the CO2 emissions from buildings - caused by heating, air conditioning, hot water or
+			lighting - it is necessary both to build new low energy buildings, and to renovate the existing
+			constructions.
+		</p>
+		<p>
+			6) Responsible consumption & recycling : 
+			Adopting responsible consumption habits is crucial, be it regarding food (particularly meat), clothing,
+			cosmetics or cleaning products. Last but not least, recycling is an absolute necessity for dealing with
+			waste.
+		</p>
+	</div>
+
+	<div class="final">
+		<h1>"The effects of climate change are real and must be acted on."</h1>
+	</div>
+
+	<script>
+		var prevScrollpos = window.pageYOffset;
+		window.onscroll = function () {
+			var currentScrollPos = window.pageYOffset;
+			if (prevScrollpos > currentScrollPos) {
+				document.getElementById("myNavbar").style.top = "0";
+			} else {
+				document.getElementById("myNavbar").style.top = "-50px";
+			}
+			prevScrollpos = currentScrollPos;
+		}
+
+		function myFunction() {
+			var x = document.getElementById("myNavbar");
+			if (x.className === "navbar") {
+				x.className += " responsive";
+			} else {
+				x.className = "navbar";
+			}
+		}
+	</script>
+
+</body>
+
+</html>
