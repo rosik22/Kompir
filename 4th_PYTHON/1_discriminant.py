@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 a = int(input())
 b = int(input())
@@ -16,3 +16,4 @@ else:
         print(x)
     else:
         print("Weird")
+
