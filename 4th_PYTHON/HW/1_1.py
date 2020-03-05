@@ -7,7 +7,4 @@ for i in range(2,len(sys.argv)):
         check = False
         break
 
-if check == True:
-    print("sorted")
-else:
-    print("unsorted")
+print(check)

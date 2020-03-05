@@ -7,7 +7,4 @@ for i in range(1, len(sys.argv) - 1):
         if sys.argv[i] == sys.argv[j]:
             check = True
 
-if check == True:
-    print("True")
-else:
-    print("False")
+print(check)

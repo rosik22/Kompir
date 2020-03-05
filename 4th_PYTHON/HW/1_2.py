@@ -8,6 +8,3 @@ if(sorted(first) == sorted(second)):
     print("True")
 else:
     print("False")
-
-    
-        
