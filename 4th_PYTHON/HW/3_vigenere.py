@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
-txt = input("Enter sentence: ")
-key = input("Enter key: ")
+import sys
 
 cipher = []
-key = list(key)
+txt = ""
+for i in range (1, len(sys.argv) - 1):
+    txt += sys.argv[i]
+
+key = sys.argv[len(sys.argv)-1]
 for i in range(len(txt) - len(key)): 
-    key.append(key[i % len(key)])
+    key += key[i % len(key)]
 
 for i in range(len(txt)):
     if txt[i].isupper():
-        x = (ord(txt[i]) + ord(key[i])) % 26 + 65
+        if key[i].isupper():
+            x = (ord(txt[i]) + ord(key[i])) % 26 + 65
+        else:
+            x = (ord(txt[i]) - 65 + ord(key[i]) - 97) % 26 + 65
     else:
-        x = (ord(txt[i]) - 97 + ord(key[i]) - 97) % 26 + 97
-    cipher.append(chr(x))
+        if key[i].islower():
+            x = (ord(txt[i]) - 97 + ord(key[i]) - 97) % 26 + 97
+        else:
+            x = (ord(txt[i]) - 97 + ord(key[i]) -65) % 26 + 97
+    cipher += chr(x)
 answer = "".join(cipher)
 
 print(answer)

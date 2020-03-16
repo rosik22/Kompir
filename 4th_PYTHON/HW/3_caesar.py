@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-txt = input("Enter sentence: ")
-key = input("Enter key: ")
+import sys
+
+key = sys.argv[len(sys.argv)-1]
+
+txt = []
+for i in range(1,len(sys.argv) - 1):
+    txt += sys.argv[i]
 
 cipher = "" 
 for i in range(len(txt)):
     char = txt[i]
-    if char == ' ':
-        cipher += " " 
-    elif char.isupper(): 
+    if char.isupper(): 
         cipher += chr((ord(char) + int(key)-65) % 26 + 65)
     else: 
         cipher += chr((ord(char) + int(key)-97) % 26 + 97)
