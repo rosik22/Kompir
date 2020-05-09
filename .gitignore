@@ -33,3 +33,10 @@
 *.exe
 *.out
 *.app
+
+# intellij bs files
+*.xml
+*.data.json
+*.meta.json
+*.class
+*.iml
