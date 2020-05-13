@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Shop {
@@ -19,21 +21,45 @@ public class Shop {
         cashiers.add(cashier);
     }
 
-    public void sellGoods(Map<Goods,Integer> goods, Cash_register cash_register) throws Exception{
-        for(Map.Entry<Goods, Integer> g : goods.entrySet()) {
-            if (listOfGoods.containsKey(g.getKey())) {
-                int quantity = g.getValue();
-                if (listOfGoods.get(g.getKey()) - quantity >= 0) {
-                    listOfGoods.put(g.getKey(), listOfGoods.get(g.getKey()) - quantity);
-                    System.out.println("Left: " + g.getKey().getName() + " x " + listOfGoods.get(g.getKey()));
-                } else {
-                    goods.remove(g.getKey());
-                    throw new Exception("There is not enough quantity of the product: "
-                            + g.getKey().getName() + ", Id:" + g.getKey().getId());
+    public Map<Goods,Integer> clientList() throws IOException{
+        Map<Goods,Integer> clientList = new HashMap<Goods,Integer>();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str;
+        int num;
+        boolean check;
+		do{
+            check = false;
+            System.out.print("(end to stop) Enter the product you're looking for: ");
+            str = br.readLine();
+            if(str.equals("end")) break;
+            
+            for(Map.Entry<Goods, Integer> g : listOfGoods.entrySet()) {
+                if(g.getKey().getName().equalsIgnoreCase(str)){
+                    System.out.print("Enter the product quantity: ");
+			        num = Integer.parseInt(br.readLine());
+                    clientList.put(g.getKey(), num);
+                    check = true;
                 }
-            } else {
-                System.out.println("There is no such product in the shop");
             }
+            if(check!=true) System.out.println("There is no such product in the shop\n");
+            else System.out.println();
+        }while(!str.equals("end"));
+        return clientList;
+    }
+
+    public void sellGoods(Cash_register cash_register) throws Exception{
+        Map<Goods,Integer> goods = new HashMap<Goods,Integer>();
+        goods = clientList();
+        for(Map.Entry<Goods, Integer> g : goods.entrySet()) {
+            int quantity = g.getValue();
+            if (listOfGoods.get(g.getKey()) - quantity >= 0) {
+                listOfGoods.put(g.getKey(), listOfGoods.get(g.getKey()) - quantity);
+            } else {
+                goods.remove(g.getKey());
+                throw new Exception("Not enough quantity of the product ("
+                        + g.getKey().getName() + "); Needed " + (quantity-listOfGoods.get(g.getKey())) + " more.");
+            }
+            
         }
         cash_register.payForGoods(goods);
     }

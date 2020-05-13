@@ -1,7 +1,9 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Scanner;
 
-public class Cash_register {
+public class Cash_register{
     private Cashier cashierOnShift;
     
     Cash_register(Cashier cashierOnShift){
@@ -21,8 +23,14 @@ public class Cash_register {
         for(Map.Entry<Goods, Integer> g : goods.entrySet()){
             priceForAll += g.getKey().getPrice()*g.getValue();
         }
-        System.out.println("Price all: " + priceForAll);
         Receipt rec = new Receipt(cashierOnShift);
-        rec.createReceipt(goods, priceForAll);
+        File rec1 = rec.createReceipt(goods, priceForAll);
+        System.out.println();
+
+        Scanner input = new Scanner(rec1);
+        while (input.hasNextLine()){
+            System.out.println(input.nextLine());
+        }
+        input.close();
     }
 }

@@ -1,9 +1,0 @@
-NUMBER: 2
-CASHIER: Anna
-DATE: 9:20h (05.05.2020)
-
---------------------
-Cheese      4 x 2.85
-Yogurt      5 x 0.85
-        ____________
-        total: 15.65

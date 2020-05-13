@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -20,14 +16,9 @@ public class Main {
 		lidl.addCashiers(Boiko);
 		lidl.addCashiers(Rumen);
 
-		System.out.println(lidl.getCountOfReceipts());
+		lidl.sellGoods(cr);
+		System.out.println();
+		lidl.sellGoods(cr);
 
-		Map<Goods,Integer> g1 = new HashMap<>();
-		g1.put(yogurt,5);
-		g1.put(cheese, 4);
-		lidl.sellGoods(g1, cr);
-		lidl.sellGoods(g1, cr);
-
-		System.out.println(lidl.revenue());
     }
 }

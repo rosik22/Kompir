@@ -18,12 +18,11 @@ public class Receipt {
         String c = dateAndTime.substring(3,5);
         dateAndTime = dateAndTime.replace(dateAndTime.substring(0,2), String.valueOf(Integer.parseInt(dateAndTime.substring(0,2))+date/60));
         dateAndTime = dateAndTime.replace(c, String.valueOf((Integer.parseInt(c)+date)%60));
-        System.out.println(dateAndTime);
         receiptNumber++;
         numberOfReceipts += receiptNumber;
     }
 
-    public void createReceipt(Map<Goods,Integer> goods, double priceForAll) throws IOException {
+    public File createReceipt(Map<Goods,Integer> goods, double priceForAll) throws IOException {
         receiptRevenue = priceForAll;
         revenue += priceForAll;
         receiptRevenue = priceForAll;
@@ -52,6 +51,7 @@ public class Receipt {
         writer.write("        total: ");
         writer.write(String.valueOf(receiptRevenue));
         writer.close();
+        return receipt;
     }
 
     public int getCount(){
