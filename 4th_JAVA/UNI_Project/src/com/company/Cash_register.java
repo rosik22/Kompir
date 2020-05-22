@@ -27,6 +27,7 @@ public class Cash_register{
         File rec1 = rec.createReceipt(goods, priceForAll);
         System.out.println();
 
+        //new method - try-catch
         Scanner input = new Scanner(rec1);
         while (input.hasNextLine()){
             System.out.println(input.nextLine());

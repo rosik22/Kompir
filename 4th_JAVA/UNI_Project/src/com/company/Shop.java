@@ -7,6 +7,7 @@ public class Shop {
     private Map<Goods, Integer> listOfGoods;
     private ArrayList<Cashier> cashiers;
     private static int countOfReceipts;
+    //Receipts array
 
     public Shop(){
         listOfGoods = new HashMap<Goods,Integer>();

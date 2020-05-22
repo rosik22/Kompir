@@ -11,6 +11,7 @@ public class Receipt {
     private static int date = 0;
     private double receiptRevenue = 0;
     private static double revenue = 0;
+    //Map<Goods,Integer>
 
     public Receipt(Cashier cashier){
         this.cashier = cashier;
