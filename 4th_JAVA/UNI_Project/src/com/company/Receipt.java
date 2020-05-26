@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Receipt {
@@ -10,8 +11,7 @@ public class Receipt {
     private String dateAndTime = "09:00h (05.05.2020)";
     private static int date = 0;
     private double receiptRevenue = 0;
-    private static double revenue = 0;
-    //Map<Goods,Integer>
+    Map<Goods,Integer> listOfGoods = new HashMap<Goods, Integer>();
 
     public Receipt(Cashier cashier){
         this.cashier = cashier;
@@ -24,8 +24,8 @@ public class Receipt {
     }
 
     public File createReceipt(Map<Goods,Integer> goods, double priceForAll) throws IOException {
+        listOfGoods = goods;
         receiptRevenue = priceForAll;
-        revenue += priceForAll;
         receiptRevenue = priceForAll;
         File receipt = new File(String.valueOf(numberOfReceipts)+".txt");
         FileWriter writer = new FileWriter(receipt);
@@ -57,10 +57,6 @@ public class Receipt {
 
     public int getCount(){
         return numberOfReceipts;
-    }
-
-    public static double getRevenue(){
-        return revenue;
     }
 
     public static int getNumberOfReceipts(){

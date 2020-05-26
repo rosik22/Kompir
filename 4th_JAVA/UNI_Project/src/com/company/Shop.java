@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -7,7 +8,8 @@ public class Shop {
     private Map<Goods, Integer> listOfGoods;
     private ArrayList<Cashier> cashiers;
     private static int countOfReceipts;
-    //Receipts array
+    private double revenue = 0;
+    private List<File> receiptList = new ArrayList<>();
 
     public Shop(){
         listOfGoods = new HashMap<Goods,Integer>();
@@ -22,8 +24,8 @@ public class Shop {
         cashiers.add(cashier);
     }
 
-    public Map<Goods,Integer> clientList() throws IOException{
-        Map<Goods,Integer> clientList = new HashMap<Goods,Integer>();
+    public Map<Goods,Integer> getClientGroceries() throws IOException{
+        Map<Goods,Integer> clientGroceriesList = new HashMap<Goods,Integer>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String str;
         int num;
@@ -38,19 +40,19 @@ public class Shop {
                 if(g.getKey().getName().equalsIgnoreCase(str)){
                     System.out.print("Enter the product quantity: ");
 			        num = Integer.parseInt(br.readLine());
-                    clientList.put(g.getKey(), num);
+                    clientGroceriesList.put(g.getKey(), num);
                     check = true;
                 }
             }
             if(check!=true) System.out.println("There is no such product in the shop\n");
             else System.out.println();
         }while(!str.equals("end"));
-        return clientList;
+        return clientGroceriesList;
     }
 
     public void sellGoods(Cash_register cash_register) throws Exception{
         Map<Goods,Integer> goods = new HashMap<Goods,Integer>();
-        goods = clientList();
+        goods = getClientGroceries();
         for(Map.Entry<Goods, Integer> g : goods.entrySet()) {
             int quantity = g.getValue();
             if (listOfGoods.get(g.getKey()) - quantity >= 0) {
@@ -62,11 +64,20 @@ public class Shop {
             }
             
         }
+        calculateRevenue(goods);
         cash_register.payForGoods(goods);
+        receiptList.add(cash_register.getReceipt());
     }
 
-    public double revenue(){
-        return Receipt.getRevenue();
+    private void calculateRevenue(Map<Goods,Integer> goods){
+        for(Map.Entry<Goods, Integer> g : goods.entrySet()){
+            System.out.println(g.getValue() + " x " + g.getKey().getPrice());
+            revenue += g.getValue() * g.getKey().getPrice();
+        }
+    }
+
+    public double getRevenue(){
+        return revenue;
     }
 
     public int getCountOfReceipts(){

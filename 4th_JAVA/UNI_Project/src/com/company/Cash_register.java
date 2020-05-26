@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Cash_register{
     private Cashier cashierOnShift;
+    private double totalFromThePurchase;
+    private File receipt;
     
     Cash_register(Cashier cashierOnShift){
         this.cashierOnShift = cashierOnShift;
@@ -19,19 +21,34 @@ public class Cash_register{
     }
 
     public void payForGoods(Map<Goods,Integer> goods) throws IOException {
-        double priceForAll = 0;
+        totalFromThePurchase = 0;
         for(Map.Entry<Goods, Integer> g : goods.entrySet()){
-            priceForAll += g.getKey().getPrice()*g.getValue();
+            totalFromThePurchase += g.getKey().getPrice()*g.getValue();
         }
         Receipt rec = new Receipt(cashierOnShift);
-        File rec1 = rec.createReceipt(goods, priceForAll);
+        this.receipt = rec.createReceipt(goods, totalFromThePurchase);
         System.out.println();
 
-        //new method - try-catch
-        Scanner input = new Scanner(rec1);
-        while (input.hasNextLine()){
-            System.out.println(input.nextLine());
+        displayReceipt(receipt);
+    }
+
+    private void displayReceipt(File receipt){
+        try{
+            Scanner output = new Scanner(receipt);
+            while (output.hasNextLine()){
+                System.out.println(output.nextLine());
+            }
+            output.close();
+        }catch (Exception e){
+            System.out.println("Something went wrong with reading the file");
         }
-        input.close();
+    }
+
+    public File getReceipt(){
+        return receipt;
+    }
+
+    public double getTotalFromThePurchase(){
+        return totalFromThePurchase;
     }
 }

@@ -20,5 +20,7 @@ public class Main {
 		System.out.println();
 		lidl.sellGoods(cr);
 
+		System.out.println("The total revenue is: " + lidl.getRevenue());
+
     }
 }
