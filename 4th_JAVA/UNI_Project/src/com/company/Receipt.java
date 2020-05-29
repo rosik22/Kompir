@@ -1,24 +1,26 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Receipt {
     private static int numberOfReceipts= 0;
     private int receiptNumber = 0;
     private Cashier cashier;
-    private String dateAndTime = "09:00h (05.05.2020)";
-    private static int date = 0;
+    private String DateAndTime;
+    private LocalDateTime time = LocalDateTime.now();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
     private double receiptRevenue = 0;
     Map<Goods,Integer> listOfGoods = new HashMap<Goods, Integer>();
 
+
     public Receipt(Cashier cashier){
         this.cashier = cashier;
-        date+=10;
-        String c = dateAndTime.substring(3,5);
-        dateAndTime = dateAndTime.replace(dateAndTime.substring(0,2), String.valueOf(Integer.parseInt(dateAndTime.substring(0,2))+date/60));
-        dateAndTime = dateAndTime.replace(c, String.valueOf((Integer.parseInt(c)+date)%60));
+        DateAndTime = formatter.format(time);
         receiptNumber++;
         numberOfReceipts += receiptNumber;
     }
@@ -37,7 +39,7 @@ public class Receipt {
         writer.write(cashier.getName());
         writer.write("\n");
         writer.write("DATE: ");
-        writer.write(dateAndTime);
+        writer.write(DateAndTime);
         writer.write("\n\n");
         writer.write("--------------------\n");
         for(Map.Entry<Goods, Integer> g : goods.entrySet()){
@@ -50,9 +52,22 @@ public class Receipt {
         }
         writer.write("        ____________\n");
         writer.write("        total: ");
-        writer.write(String.valueOf(receiptRevenue));
+        writer.write(String.format("%.2f", receiptRevenue));
         writer.close();
+        displayReceipt(receipt);
         return receipt;
+    }
+
+    private void displayReceipt(File receipt) {
+        try {
+            Scanner output = new Scanner(receipt);
+            while (output.hasNextLine()) {
+                System.out.println(output.nextLine());
+            }
+            output.close();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with reading the file");
+        }
     }
 
     public int getCount(){
