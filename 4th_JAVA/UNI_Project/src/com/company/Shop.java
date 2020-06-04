@@ -75,6 +75,7 @@ public class Shop {
             Map<Goods, Integer> goods = new HashMap<Goods, Integer>();
             goods = getClientGroceries();
             
+            cash_register.addToRegister(goods);
             cash_register.start();
 
             for (Map.Entry<Goods, Integer> g : goods.entrySet()) {
@@ -88,7 +89,6 @@ public class Shop {
                 }
 
             }
-            cash_register.addToRegister(goods);
 
             calculateRevenue(goods);
             receiptList.add(cash_register.getReceipt());

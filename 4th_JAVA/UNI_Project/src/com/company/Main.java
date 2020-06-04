@@ -67,7 +67,7 @@ public class Main {
 		}catch(Exception e){
 			System.out.println(e);
 		}
-
+		
 		System.out.println("\nThe total revenue for " + lidl.getName() +" is: " + String.format("%.2f", lidl.getRevenue()));
 
     }

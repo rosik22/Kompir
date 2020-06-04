@@ -2,14 +2,12 @@ import java.util.ArrayList;
 
 public class Studio{
     private String name;
-    private int originalNumber;
-    private int numberOfClothesNeeded;
+    private int numberOfClothesToSew;
     private ArrayList<Tailor> listOfTailors;
 
-    public Studio(String name, int numberOfClothesNeeded){
+    public Studio(String name, int numberOfClothesToSew){
         this.name = name;
-        this.numberOfClothesNeeded = numberOfClothesNeeded;
-        originalNumber = numberOfClothesNeeded;
+        this.numberOfClothesToSew = numberOfClothesToSew;
         listOfTailors = new ArrayList<Tailor>();
     }
 
@@ -18,19 +16,21 @@ public class Studio{
     }
 
     public int getNumberOfClothesNeeded(){
-        return numberOfClothesNeeded;
+        return numberOfClothesToSew;
     }
 
     public void addTailor(Tailor tailor){
         listOfTailors.add(tailor);
+        tailor.addStudio(this);
+    }
+
+    synchronized public void getCloth(){
+        numberOfClothesToSew--;
     }
 
     public void Sewing(){
-        if(numberOfClothesNeeded > 0){
-            numberOfClothesNeeded--;
+        for(int i=0; i<listOfTailors.size(); i++){
+            listOfTailors.get(i).start();
         }
-        System.out.println(Thread.currentThread().getName() 
-                            + " is sewing cloth number " +
-                            (originalNumber-numberOfClothesNeeded));
     }
 }

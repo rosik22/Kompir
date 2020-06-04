@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +9,10 @@ public class Cash_register implements Runnable {
     private Cashier cashierOnShift;
     private double totalFromThePurchase;
     private File receipt;
+    private ArrayList<Map<Goods, Integer>> allLists = new ArrayList<>();
     private Map<Goods, Integer> goods = new HashMap<>();
     private Thread t;
+    private int count = 0;
 
     Cash_register(Cashier cashierOnShift, String name) {
         this.name = name;
@@ -24,8 +27,8 @@ public class Cash_register implements Runnable {
         return cashierOnShift;
     }
 
-    public void addToRegister(Map<Goods, Integer> goods) {
-        this.goods = goods;
+    public void addToRegister(Map<Goods, Integer> goodies) {
+        allLists.add(goodies);
     }
 
     public File getReceipt() {
@@ -36,14 +39,20 @@ public class Cash_register implements Runnable {
         return totalFromThePurchase;
     }
 
+    synchronized private void setGoods(){
+        goods = allLists.get(count);
+        count++;
+    }
+
     public void run() {
         System.out.println("\nRunning \"" + name + "\"");
-        /* try {
+        try {
+            System.out.println(Thread.currentThread());
             Thread.sleep(10000);
         } catch (InterruptedException e1) {
             e1.printStackTrace();
-        } */
-        totalFromThePurchase = 0;
+        }
+        setGoods();
         for (Map.Entry<Goods, Integer> g : goods.entrySet()) {
             totalFromThePurchase += g.getKey().getPrice() * g.getValue();
         }
