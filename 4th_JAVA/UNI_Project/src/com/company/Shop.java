@@ -89,7 +89,6 @@ public class Shop {
                 }
 
             }
-
             calculateRevenue(goods);
             receiptList.add(cash_register.getReceipt());
         }else{

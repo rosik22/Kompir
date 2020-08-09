@@ -1,8 +1,8 @@
 NUMBER: 3
 CASHIER: Anna
-DATE: 14:49:08 04/06/2020
+DATE: 16:48:37 05/06/2020
 
 --------------------
-Yogurt      3 x 0.85
+Cheese      6 x 2.85
         ____________
-        total: 13.95
+        total: 22.80

@@ -1,8 +1,8 @@
 NUMBER: 1
 CASHIER: Anna
-DATE: 14:49:02 04/06/2020
+DATE: 16:48:33 05/06/2020
 
 --------------------
-Cheese      4 x 2.85
+Cheese      2 x 2.85
         ____________
-        total: 11.40
+        total: 5.70

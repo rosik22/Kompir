@@ -1,8 +1,8 @@
 NUMBER: 2
 CASHIER: Boiko
-DATE: 14:49:05 04/06/2020
+DATE: 16:48:35 05/06/2020
 
 --------------------
-Bread      5 x 1.0
+Cheese      5 x 2.85
         ____________
-        total: 5.00
+        total: 14.25
