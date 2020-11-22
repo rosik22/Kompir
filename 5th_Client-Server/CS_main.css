@@ -1,0 +1,128 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: rgb(212, 212, 212);
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(29, 29, 29);
+    border-radius: 10px;
+}
+
+.image {
+    display: flex;
+    height: auto;
+}
+
+.text {
+    color: rgb(245, 238, 229);
+    font-size: 70px;
+    font-family: 'Raleway', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: 3px 2px rgb(0, 0, 0);
+    padding: 20px;
+    border: 2px solid black;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: rgb(29, 29, 29);
+    position: fixed;
+    width: 60%;
+    left: 20%;
+    display: block;
+    transition: top 0.3s;
+    opacity: 0.8;
+    border-radius: 5px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: rgb(245, 238, 229);
+    width: 30%;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    transform: translate(10%);
+}
+
+.navbar a.active {
+    color: rgb(245, 238, 229);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+.container_navbar {
+    height: 60px;
+    background-color: rgb(61, 61, 61);
+}
+
+.container_footer {
+    background-color: rgb(19, 18, 18);
+    padding: 0 0 10px 0;
+}
+
+.footer {
+    font-size: 10px;
+    text-align: center;
+    padding: 10px 40px 0 40px;
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar a:not(:first-child) {
+        display: none;
+    }
+    .navbar a.icon {
+        position: absolute;
+        display: block;
+        right: 12%;
+    }
+    .navbar.responsive {
+        position: fixed;
+    }
+    .navbar {
+        width: 20%;
+        left: 40%;
+    }
+    .navbar.responsive .icon {
+        position: absolute;
+        right: 12%;
+        top: 0;
+        padding-left: 0%;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .navbar {
+        width: 28%;
+        left: 35%;
+    }
+}
