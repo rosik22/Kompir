@@ -5,6 +5,7 @@ showSlides(slideIndex);
 
 function plusSlides(n) {
     showSlides(slideIndex += n);
+    current = slideIndex;
 }
 
 function currentSlide(n) {
@@ -31,5 +32,5 @@ $(document).ready(function() {
     setInterval(function() {
         current = (current < slides.length - 1) ? current + 1 : 0;
         currentSlide(current);
-    }, 2000);
+    }, 3000);
 });

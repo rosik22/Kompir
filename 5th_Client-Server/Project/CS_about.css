@@ -1,0 +1,60 @@
+.container {
+    font-size: 20px;
+    height: 80%;
+    text-align: center;
+    padding: 1% 8% 8% 8%;
+    background-color: rgb(253, 240, 221);
+}
+
+.container img {
+    width: 10%;
+    padding: 0 0 5% 0;
+}
+
+.comment {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container_comment {
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    overflow: auto;
+}
+
+.container_individual {
+    float: left;
+    width: 99%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 2%;
+    text-align: center;
+    color: rgb(32, 32, 32);
+    background-color: rgb(218, 203, 182);
+    overflow: auto;
+}
+
+@media screen and (max-width: 992px) {
+    .container img {
+        width: 20%;
+        padding: 0 8% 8% 15%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container img {
+        width: 30%;
+        padding: 0 8% 8% 15%;
+    }
+    .container_comment {
+        margin-top: 20%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+}
