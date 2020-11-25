@@ -47,7 +47,7 @@ function love.draw()
 	g.setColor(playerColor)
 	g.rectangle("fill",xPos,yPos,playerWidth,playerHeight)
 	g.setColor(groundColor)
-	g.rectangle("fill",0,yFloor,800,100)
+	g.rectangle("fill",0,yFloor,1100,100)
 end
 
 function love.keyreleased(key)

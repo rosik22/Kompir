@@ -47,6 +47,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .container {
+        height: 100%;
+        padding: 1% 8% 20% 8%;
+    }
     .container img {
         width: 30%;
         padding: 0 8% 8% 15%;

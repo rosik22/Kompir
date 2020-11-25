@@ -9,7 +9,7 @@ end
 
 function love.draw()
 	love.graphics.rotate(angle)
-	love.graphics.setColor(0,0,255)
+	love.graphics.setColor(0,0,0)
 	love.graphics.rectangle("fill",600,400,width,height)
 	love.graphics.rectangle("fill",400,300,width*2,height*2)
 end
